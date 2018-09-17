@@ -42,7 +42,7 @@
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
       <div class="container">
         <a class="navbar-brand js-scroll-trigger" href="#page-top">
-          <img src="../img/Icon.PNG" width="62px"></img>
+          <img src="../img/MB.PNG" width="62px"></img>
           <span style="vertical-align: text-bottom;">Mombay</span>
         </a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -56,6 +56,9 @@
             </li>
             <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="#joinUs">Join Us</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#forCompanies">For Companies</a>
             </li>
             <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
@@ -118,7 +121,7 @@
             <div class="feature-item">
               <i class="fas fa-rupee-sign"></i>
               <h3>Make Easy Money</h3>
-              <p class="text-muted">Add a atleat ₹7000 to your monthly family income. And of course sky is the limit!</p>
+              <p class="text-muted">Add a at least ₹7000 to your monthly family income. And of course sky is the limit!</p>
             </div>
           </div>
         </div>
@@ -167,6 +170,56 @@
       </div>
     </section>
 
+    <section class="contact" id="forCompanies">
+      <div class="container">
+        <h2>Mombay for Business</h2>
+        <p>Get home cooked meals at work.</p>
+        <div class="mt-5 row">
+          <div class="col-lg-6 col-sm-12 offset-lg-3">
+            <form id="cook_register" onsubmit="saveCompanyData(event)">
+              <div class="form-group row">
+                <label class="col-form-label col-lg-4 col-sm-12 text-left" style="font-size: 25px;" for="customer_name"><h3>Name</h3></label>
+                <div class="col-lg-8 col-sm-12">
+                  <input type="text" class="form-control" id="customer_name" placeholder="Enter Name" required>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-form-label col-lg-4 col-sm-12 text-left" style="font-size: 25px;" for="customer_email"><h3>Email</h3></label>
+                <div class="col-lg-8 col-sm-12">
+                  <input type="email" class="form-control" id="customer_email" placeholder="Enter Email" required>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-form-label col-lg-4 col-sm-12 text-left" style="font-size: 25px;" for="customer_phone_number"><h3>Phone Number</h3></label>
+                <div class="col-lg-8 col-sm-12">
+                  <input type="text" maxlength="10" minlength="10" class="form-control" id="customer_phone_number" placeholder="Enter Phone Number" required>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-form-label col-lg-4 col-sm-12 text-left" style="font-size: 25px;" for="company_name"><h3>Company Name</h3></label>
+                <div class="col-lg-8 col-sm-12">
+                  <input type="text" class="form-control" id="company_name" placeholder="Enter Company Name" required>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-form-label col-lg-4 col-sm-12 text-left" style="font-size: 25px;" for="no_of_employee"><h3>No. of employee</h3></label>
+                <div class="col-lg-8 col-sm-12">
+                  <select class="form-control" id="no_of_employee">
+                    <option value="30-50">30-50</option>
+                    <option value="50-100">50-100</option>
+                    <option value="150-300">150-300</option>
+                    <option value="300-500">300-500</option>
+                    <option value="500-1500">500-1500</option>
+                    <option value="1500-3000">1500-3000</option>
+                  </select>
+                </div>
+              </div>
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
 
 <!--     <section class="features" id="features">
       <div class="container">
@@ -241,10 +294,10 @@
       <div class="overlay"></div>
     </section> -->
 
-    <section class="contact" id="contact">
+    <section class="contact" id="contact" style="background-color: #b1364d;">
       <div class="container">
         <h2>Contact Us</h2>
-        <p class="text-muted">You can drop us a message in any of these social media platform.</p>
+        <p>You can drop us a message in any of these social media platform.</p>
         <ul class="list-inline list-social">
           <li class="list-inline-item social-twitter">
             <a href="https://twitter.com/mombay_in" target="_blank">
@@ -262,12 +315,16 @@
             </a>
           </li>
         </ul>
+        <div style="font-size: 25px;margin: 5px 0px;">
+          or
+        </div>
+        <p>You can give us a call @ +919769242393 or send email @ <a href="mombayltd@gmail.com">contact@mombay.in</a></p>
       </div>
     </section>
 
     <footer>
       <div class="container">
-        <p>&copy; Your Website 2018. All Rights Reserved.</p>
+        <p>&copy; Masionbay Hospitality Pvt Ltd. 2018. All Rights Reserved.</p>
 <!--         <ul class="list-inline">
           <li class="list-inline-item">
             <a href="#">Privacy</a>
@@ -308,6 +365,30 @@
             'phone_number': phone_number,
             'address': address,
             'type_of_meal': type_of_meal
+          },
+          success: function(res) {
+            console.log(res)
+          }
+        })
+      }
+      function saveCompanyData(e) {
+        e.preventDefault();
+        let name = document.getElementById('customer_name').value;
+        let phone_number = document.getElementById('customer_phone_number').value;
+        let email = document.getElementById('customer_email').value;
+        let company_name = document.getElementById('company_name').value;
+        let no_of_employee = document.getElementById('no_of_employee').value;
+
+        var jqxhr = $.ajax({
+          url: 'https://script.google.com/macros/s/AKfycbwGLM0t4HfS0XTEKHkW0kDn1-vryD9ohI657YyBAhfp4RG9DA/exec',
+          method: "GET",
+          dataType: "json",
+          data: {
+            'name': name,
+            'email': email,
+            'phone_number': phone_number,
+            'company_name': company_name,
+            'no_of_employee': no_of_employee
           },
           success: function(res) {
             console.log(res)
