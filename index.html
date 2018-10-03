@@ -165,6 +165,7 @@
               </div>
               <button type="submit" class="btn btn-primary">Submit</button>
             </form>
+            <p style="display: none;" id="cook_register_message">Thanks for registering with us. We will contact you shortly.</p>
           </div>
         </div>
       </div>
@@ -176,7 +177,7 @@
         <p>Get home cooked meals at work.</p>
         <div class="mt-5 row">
           <div class="col-lg-6 col-sm-12 offset-lg-3">
-            <form id="cook_register" onsubmit="saveCompanyData(event)">
+            <form id="company_register" onsubmit="saveCompanyData(event)">
               <div class="form-group row">
                 <label class="col-form-label col-lg-4 col-sm-12 text-left" style="font-size: 25px;" for="customer_name"><h3>Name</h3></label>
                 <div class="col-lg-8 col-sm-12">
@@ -216,6 +217,7 @@
               </div>
               <button type="submit" class="btn btn-primary">Submit</button>
             </form>
+            <p style="display: none;" id="company_register_message">Thanks for contacting us. We will contact you shortly.</p>
           </div>
         </div>
       </div>
@@ -356,6 +358,7 @@
         let address = document.getElementById('address').value;
         let type_of_meal = document.getElementById('type_of_meal').value;
 
+
         var jqxhr = $.ajax({
           url: 'https://script.google.com/macros/s/AKfycbzYvaVbJWmzg2y4L3wKA89vc3zkulGEwpXQ0DnQP4xrKghwYQ/exec',
           method: "GET",
@@ -367,7 +370,9 @@
             'type_of_meal': type_of_meal
           },
           success: function(res) {
-            console.log(res)
+            let form = document.getElementById('cook_register');
+            form.style.display = 'none';
+            document.getElementById('cook_register_message').style.display = 'block';
           }
         })
       }
@@ -391,7 +396,9 @@
             'no_of_employee': no_of_employee
           },
           success: function(res) {
-            console.log(res)
+            let form = document.getElementById('company_register');
+            form.style.display = 'none';
+            document.getElementById('company_register_message').style.display = 'block';
           }
         })
       }
